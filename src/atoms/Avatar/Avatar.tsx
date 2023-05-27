@@ -7,19 +7,21 @@ export const Avatar = ({
   alt,
   className,
   size = 'normal',
-  ...props
 }: AvatarProps): JSX.Element => {
   return (
     <div
       className={clsx(
         className,
-        'h-10 w-10 rounded-full bg-white/90 p-0.5 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:ring-white/10'
+        'rounded-full bg-white/90 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:ring-white/10',
+        {
+          'h-20 w-20 p-2': size === 'large',
+          'h-10 w-10 p-0.5': size === 'normal',
+        }
       )}
-      {...props}
     >
       <Image
         src={src}
-        alt=""
+        alt={alt}
         sizes={size === 'large' ? '4rem' : '2.25rem'}
         className={clsx(
           'rounded-full bg-zinc-100 object-cover dark:bg-zinc-800',
