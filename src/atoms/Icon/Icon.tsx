@@ -1,6 +1,9 @@
 import clsx from 'clsx';
 import { IconProps } from './Icon.types';
 
+// The icon component is a wrapper around the SVG element
+// that provides some default styling and a few props
+// SVG elements are taken from https://heroicons.com/
 export const Icon = ({
   className,
   clickable = false,
@@ -25,6 +28,5 @@ export const Icon = ({
     className
   );
 
-  // We render the children as the icon itself
   return <div className={className} {...props} />;
 };
