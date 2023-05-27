@@ -1,8 +1,5 @@
 import { injectAxe, checkA11y, configureAxe } from 'axe-playwright';
-
-import { getStoryContext } from '@storybook/test-runner';
-
-import type { TestRunnerConfig } from '@storybook/test-runner';
+import { getStoryContext, TestRunnerConfig } from '@storybook/test-runner';
 
 /*
  * See https://storybook.js.org/docs/react/writing-tests/test-runner#test-hook-api-experimental
