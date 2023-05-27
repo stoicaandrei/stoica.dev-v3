@@ -12,7 +12,7 @@ export default function Home() {
           content="Highly motivated and very passionate React Full Stack Developer 5 years of experience in Typescript, React, Next.js, Tailwind CSS, Ant Design, Node js, PostgreSQL, MongoDB"
         />
       </Head>
-      <Container>
+      <Container className="mt-9">
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
             Software designer, founder, and amateur astronaut.

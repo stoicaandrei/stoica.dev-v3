@@ -1,9 +1,9 @@
 'use client';
 
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
 import { HeaderProps } from './Header.types';
 import { Container } from '@/atoms';
-import { Fragment, useEffect, useRef } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import clsx from 'clsx';
 import Image from 'next/image';
@@ -12,7 +12,7 @@ import { Popover, Transition } from '@headlessui/react';
 
 export const Header = (props: HeaderProps) => {
   //   const isHomePage = useRouter().pathname === '/';
-  const isHomePage = true;
+  const [isHomePage, setIsHomePage] = useState(true);
 
   const headerRef = useRef<HTMLDivElement>(null);
   const avatarRef = useRef<HTMLDivElement>(null);
@@ -30,6 +30,7 @@ export const Header = (props: HeaderProps) => {
       document.documentElement.style.removeProperty(property);
     }
 
+    console.log('effect triggering');
     function updateHeaderStyles() {
       let { top, height } = headerRef.current.getBoundingClientRect();
       let scrollY = clamp(
@@ -42,6 +43,7 @@ export const Header = (props: HeaderProps) => {
         setProperty('--header-position', 'sticky');
       }
 
+      console.log('content offset');
       setProperty('--content-offset', `${downDelay}px`);
 
       if (isInitial.current || scrollY < downDelay) {
@@ -112,7 +114,7 @@ export const Header = (props: HeaderProps) => {
       window.removeEventListener('scroll', updateStyles);
       window.removeEventListener('resize', updateStyles);
     };
-  }, [isHomePage]);
+  }, []);
 
   return (
     <>
