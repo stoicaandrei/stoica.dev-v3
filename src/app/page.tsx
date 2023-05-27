@@ -25,16 +25,16 @@ export default function Home() {
           </p>
           <div className="mt-6 flex gap-6">
             <Link href="https://twitter.com">
-              <Icon icon="twitter" className="w-6 h-6" />
+              <Icon icon="twitter" clickable />
             </Link>
             <Link href="https://instagram.com">
-              <Icon icon="instagram" className="w-6 h-6" />
+              <Icon icon="instagram" clickable />
             </Link>
             <Link href="https://github.com">
-              <Icon icon="github" className="w-6 h-6" />
+              <Icon icon="github" clickable />
             </Link>
             <Link href="https://linkedin.com">
-              <Icon icon="linkedin" className="w-6 h-6" />
+              <Icon icon="linkedin" clickable />
             </Link>
           </div>
         </div>
