@@ -38,6 +38,7 @@ export default function Home() {
             </Link>
           </div>
         </div>
+        <div className="w-full h-[3000px]"></div>
       </Container>
     </>
   );
