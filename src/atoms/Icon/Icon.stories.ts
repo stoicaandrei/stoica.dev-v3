@@ -5,10 +5,6 @@ const meta: Meta<typeof Icon> = {
   title: 'Atoms/Icon',
   component: Icon,
   tags: ['autodocs'],
-  args: {
-    width: 24,
-    height: 24,
-  },
   argTypes: {
     icon: {
       control: {
@@ -21,44 +17,15 @@ const meta: Meta<typeof Icon> = {
 export default meta;
 type Story = StoryObj<typeof Icon>;
 
-export const Mail: Story = {
-  args: {
-    icon: 'mail',
-  },
-};
-
-export const Briefcase: Story = {
-  args: {
-    icon: 'briefcase',
-  },
-};
-
-export const ArrowDown: Story = {
-  args: {
-    icon: 'arrowDown',
-  },
-};
-
-export const GitHub: Story = {
+export const Default: Story = {
   args: {
     icon: 'github',
   },
 };
 
-export const Instagram: Story = {
+export const Clickable: Story = {
   args: {
-    icon: 'instagram',
-  },
-};
-
-export const LinkedIn: Story = {
-  args: {
-    icon: 'linkedin',
-  },
-};
-
-export const Twitter: Story = {
-  args: {
-    icon: 'twitter',
+    icon: 'github',
+    clickable: true,
   },
 };
