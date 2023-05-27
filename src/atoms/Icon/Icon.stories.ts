@@ -38,3 +38,27 @@ export const ArrowDown: Story = {
     icon: 'arrowDown',
   },
 };
+
+export const GitHub: Story = {
+  args: {
+    icon: 'github',
+  },
+};
+
+export const Instagram: Story = {
+  args: {
+    icon: 'instagram',
+  },
+};
+
+export const LinkedIn: Story = {
+  args: {
+    icon: 'linkedin',
+  },
+};
+
+export const Twitter: Story = {
+  args: {
+    icon: 'twitter',
+  },
+};
