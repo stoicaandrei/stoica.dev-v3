@@ -1,10 +1,5 @@
 import { ComponentPropsWithoutRef } from 'react';
-import iconsMap from './icons';
-
-export interface SVGProps extends ComponentPropsWithoutRef<'svg'> {}
-
-export interface IconProps extends SVGProps {
-  icon: keyof typeof iconsMap;
+export interface IconProps extends ComponentPropsWithoutRef<'div'> {
   clickable?: boolean;
-  revertColors?: boolean;
+  outlined?: boolean;
 }

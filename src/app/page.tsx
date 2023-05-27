@@ -1,4 +1,16 @@
-import { Container, Icon } from '@/atoms';
+import {
+  Container,
+  GithubIcon,
+  Icon,
+  InstagramIcon,
+  TwitterIcon,
+  LinkedinIcon,
+  SunIcon,
+  MoonIcon,
+  CloseIcon,
+  BriefcaseIcon,
+  ArrowDownIcon,
+} from '@/atoms';
 import Head from 'next/head';
 import Link from 'next/link';
 
@@ -25,17 +37,22 @@ export default function Home() {
           </p>
           <div className="mt-6 flex gap-6">
             <Link href="https://twitter.com">
-              <Icon icon="twitter" clickable />
+              <TwitterIcon clickable />
             </Link>
             <Link href="https://instagram.com">
-              <Icon icon="instagram" clickable />
+              <InstagramIcon clickable />
             </Link>
             <Link href="https://github.com">
-              <Icon icon="github" clickable />
+              <GithubIcon clickable />
             </Link>
             <Link href="https://linkedin.com">
-              <Icon icon="linkedin" clickable />
+              <LinkedinIcon clickable />
             </Link>
+            <ArrowDownIcon />
+            <BriefcaseIcon />
+            <CloseIcon />
+            <MoonIcon />
+            <SunIcon />
           </div>
         </div>
         <div className="w-full h-[3000px]"></div>
