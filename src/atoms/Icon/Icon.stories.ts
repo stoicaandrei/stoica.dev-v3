@@ -1,31 +1,21 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Icon } from './Icon';
+import { GithubIcon } from './icons';
 
-const meta: Meta<typeof Icon> = {
+const meta: Meta<typeof GithubIcon> = {
   title: 'Atoms/Icon',
-  component: Icon,
+  component: GithubIcon,
   tags: ['autodocs'],
-  argTypes: {
-    icon: {
-      control: {
-        type: 'select',
-      },
-    },
-  },
 };
 
 export default meta;
-type Story = StoryObj<typeof Icon>;
+type Story = StoryObj<typeof GithubIcon>;
 
 export const Default: Story = {
-  args: {
-    icon: 'github',
-  },
+  args: {},
 };
 
 export const Clickable: Story = {
   args: {
-    icon: 'github',
     clickable: true,
   },
 };
