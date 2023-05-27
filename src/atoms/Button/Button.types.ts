@@ -1,5 +1,5 @@
-import { ComponentPropsWithoutRef } from "react";
+import { ComponentPropsWithoutRef } from 'react';
 
 export interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
-    variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary';
 }
