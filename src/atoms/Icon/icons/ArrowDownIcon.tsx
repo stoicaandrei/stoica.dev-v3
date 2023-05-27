@@ -7,6 +7,7 @@ export const ArrowDownIcon = (props: SVGProps) => (
       strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
+      className="stroke-zinc-400"
     />
   </svg>
 );
