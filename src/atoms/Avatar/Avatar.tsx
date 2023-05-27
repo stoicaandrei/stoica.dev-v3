@@ -7,6 +7,7 @@ export const Avatar = ({
   alt,
   className,
   size = 'normal',
+  ...props
 }: AvatarProps): JSX.Element => {
   return (
     <div
@@ -18,6 +19,7 @@ export const Avatar = ({
           'h-10 w-10 p-0.5': size === 'normal',
         }
       )}
+      {...props}
     >
       <Image
         src={src}
