@@ -13,7 +13,9 @@ export const Icon = ({
       'cursor-pointer': clickable,
       // 'fill-zinc-500 dark:fill-zinc-400': !outlined,
       'fill-zinc-500': !outlined,
+      'dark:fill-zinc-400': !outlined,
       'fill-zinc-100 stroke-zinc-500': outlined,
+      'dark:fill-zinc-700 dark:stroke-zinc-500': outlined,
       // 'hover:fill-zinc-600 dark:hover:fill-zinc-300':
       //   clickable && !revertColors,
 
