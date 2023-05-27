@@ -19,6 +19,8 @@ export const Icon = ({
 
       'fill-zinc-100 stroke-zinc-500': outlined,
       'dark:fill-zinc-700 dark:stroke-zinc-500': outlined,
+      'hover:fill-zinc-200 hover:stroke-zinc-700': outlined && clickable,
+      'dark:hover:stroke-zinc-400': outlined && clickable,
     },
     className
   );
