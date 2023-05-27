@@ -14,6 +14,7 @@ const config: StorybookConfig = {
       },
     },
     '@storybook/addon-a11y',
+    '@storybook/addon-coverage',
   ],
   framework: {
     name: '@storybook/nextjs',
