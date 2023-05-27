@@ -20,5 +20,5 @@ export const Button = ({
     className
   );
 
-  return <button className={className} {...props} />;
+  return <button className={className} role="button" {...props} />;
 };
