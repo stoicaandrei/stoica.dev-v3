@@ -48,11 +48,6 @@ export default function Home() {
             <Link href="https://linkedin.com">
               <LinkedinIcon clickable />
             </Link>
-            <ArrowDownIcon />
-            <BriefcaseIcon />
-            <CloseIcon />
-            <MoonIcon />
-            <SunIcon />
           </div>
         </div>
         <div className="w-full h-[3000px]"></div>
