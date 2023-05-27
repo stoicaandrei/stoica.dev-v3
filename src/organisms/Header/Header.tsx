@@ -16,6 +16,7 @@ import Link from 'next/link';
 import clsx from 'clsx';
 import avatarImage from '@/images/avatar.jpg';
 import { Popover, Transition } from '@headlessui/react';
+import { clamp } from '@/utils';
 
 export const Header = (props: HeaderProps) => {
   //   const isHomePage = useRouter().pathname === '/';
@@ -328,10 +329,4 @@ function ModeToggle() {
       <MoonIcon className="hidden h-6 w-6 fill-zinc-700 stroke-zinc-500 transition dark:block [@media(prefers-color-scheme:dark)]:group-hover:stroke-zinc-400 [@media_not_(prefers-color-scheme:dark)]:fill-teal-400/10 [@media_not_(prefers-color-scheme:dark)]:stroke-teal-500" />
     </button>
   );
-}
-
-function clamp(number, a, b) {
-  let min = Math.min(a, b);
-  let max = Math.max(a, b);
-  return Math.min(Math.max(number, min), max);
 }
