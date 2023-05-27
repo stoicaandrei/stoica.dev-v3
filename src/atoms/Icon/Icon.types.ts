@@ -6,4 +6,5 @@ export interface SVGProps extends ComponentPropsWithoutRef<'svg'> {}
 export interface IconProps extends SVGProps {
   icon: keyof typeof iconsMap;
   clickable?: boolean;
+  revertColors?: boolean;
 }
