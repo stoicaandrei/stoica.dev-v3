@@ -1,8 +1,5 @@
 import Link from 'next/link';
-import {
-  MobileNavigationProps,
-  MobileNavItemProps,
-} from './MobileNavigation.types';
+import { NavigationProps, NavItemProps } from '../Navigation.types';
 import { Popover, Transition } from '@headlessui/react';
 import { ChevronDownIcon, CloseIcon } from '@/components/atoms';
 import { Fragment } from 'react';
@@ -11,7 +8,7 @@ export const MobileNavigation = ({
   activePath,
   items,
   ...props
-}: MobileNavigationProps) => {
+}: NavigationProps) => {
   return (
     <Popover {...props}>
       <Popover.Button className="group flex items-center rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10 dark:hover:ring-white/20">
@@ -70,7 +67,7 @@ export const MobileNavigation = ({
   );
 };
 
-const MobileNavItem = ({ active, href, label }: MobileNavItemProps) => {
+const MobileNavItem = ({ active, href, label }: NavItemProps) => {
   return (
     <Popover.Button as={Link} href={href} className="block py-2">
       {label}

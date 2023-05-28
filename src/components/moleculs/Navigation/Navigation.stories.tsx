@@ -1,9 +1,9 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { MobileNavigation } from './MobileNavigation';
+import { Navigation } from './Navigation';
 
-const meta: Meta<typeof MobileNavigation> = {
-  title: 'Organisms/MobileNavigation',
-  component: MobileNavigation,
+const meta: Meta<typeof Navigation> = {
+  title: 'Organisms/Navigation',
+  component: Navigation,
   args: {
     items: [
       { href: '/', label: 'Home' },
@@ -15,8 +15,14 @@ const meta: Meta<typeof MobileNavigation> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof MobileNavigation>;
+type Story = StoryObj<typeof Navigation>;
 
 export const Default: Story = {
   args: {},
+};
+
+export const Active: Story = {
+  args: {
+    activePath: '/',
+  },
 };

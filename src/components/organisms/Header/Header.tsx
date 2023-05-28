@@ -175,26 +175,22 @@ export const Header = (props: HeaderProps) => {
             <div className="relative flex gap-4">
               <div className="flex flex-1">{!isHomePage && <Avatar />}</div>
               <div className="flex flex-1 justify-end md:justify-center">
-                <MobileNavigation className="pointer-events-auto md:hidden" />
                 <Navigation
                   items={[
-                    { href: '/about', key: '/about', children: 'About' },
+                    { href: '/about', label: 'About' },
                     {
                       href: '/articles',
-                      key: '/articles',
-                      children: 'Articles',
+                      label: 'Articles',
                     },
                     {
                       href: '/projects',
-                      key: '/projects',
-                      children: 'Projects',
+                      label: 'Projects',
                     },
                     {
                       href: '/speaking',
-                      key: '/speaking',
-                      children: 'Speaking',
+                      label: 'Speaking',
                     },
-                    { href: '/uses', key: '/uses', children: 'Uses' },
+                    { href: '/uses', label: 'Uses' },
                   ]}
                   className="pointer-events-auto hidden md:block"
                 />
