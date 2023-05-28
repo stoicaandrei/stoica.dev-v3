@@ -1,4 +1,6 @@
 import type { StorybookConfig } from '@storybook/nextjs';
+import path from 'path';
+
 const config: StorybookConfig = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
@@ -23,5 +25,18 @@ const config: StorybookConfig = {
   docs: {
     autodocs: 'tag',
   },
+  webpackFinal: async (config, { configType }) => {
+    if (!config.resolve) return config;
+    if (!config.resolve.alias) config.resolve.alias = [];
+
+    config.resolve.alias['@/atoms'] = path.resolve(__dirname, '../src/atoms');
+    config.resolve.alias['@/molecules'] = path.resolve(__dirname, '../src/molecules');
+    config.resolve.alias['@/organisms'] = path.resolve(__dirname, '../src/organisms');
+    config.resolve.alias['@/templates'] = path.resolve(__dirname, '../src/templates');
+    config.resolve.alias['@/images'] = path.resolve(__dirname, '../src/images');
+    config.resolve.alias['@/utils'] = path.resolve(__dirname, '../src/utils');
+
+    return config;
+  }
 };
 export default config;
