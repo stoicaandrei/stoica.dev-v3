@@ -2,4 +2,3 @@ export * from './Button';
 export * from './Icon';
 export * from './Container';
 export * from './Avatar';
-export * from './NavItem';
