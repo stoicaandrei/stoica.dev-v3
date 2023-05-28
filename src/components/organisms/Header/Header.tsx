@@ -4,7 +4,7 @@ import { Avatar, Container, MoonIcon, SunIcon } from '@/components/atoms';
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import avatarImage from '@/images/avatar.jpg';
-import { Navigation } from '@/components/moleculs';
+import { Navigation } from '@/components/molecules';
 import { toggleDarkMode } from './utils/toggleDarkmode';
 import { updateAvatarStyles, updateHeaderStyles } from './utils/scrollStyling';
 
