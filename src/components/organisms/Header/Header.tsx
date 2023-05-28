@@ -1,22 +1,20 @@
 'use client';
-
-// import { useRouter } from 'next/router';
 import { HeaderProps } from './Header.types';
 import { Avatar, Container, MoonIcon, SunIcon } from '@/components/atoms';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import avatarImage from '@/images/avatar.jpg';
 import { Navigation } from '@/components/moleculs';
 import { toggleDarkMode } from './utils/toggleDarkmode';
 import { updateAvatarStyles, updateHeaderStyles } from './utils/scrollStyling';
 
-export const Header = (props: HeaderProps) => {
-  //   const isHomePage = useRouter().pathname === '/';
-  const [isHomePage, setIsHomePage] = useState(true);
-
+export const Header = ({
+  highlightAvatar = false,
+  activePath,
+  ...props
+}: HeaderProps) => {
   const headerRef = useRef<HTMLDivElement>(null);
   const avatarRef = useRef<HTMLDivElement>(null);
-  const isInitial = useRef(true);
 
   useEffect(() => {
     let downDelay = avatarRef.current?.offsetTop ?? 0;
@@ -25,14 +23,12 @@ export const Header = (props: HeaderProps) => {
     function updateStyles() {
       updateHeaderStyles({
         headerRect: headerRef.current?.getBoundingClientRect(),
-        isInitial: isInitial.current,
         downDelay,
         upDelay,
       });
       updateAvatarStyles({
         downDelay,
       });
-      isInitial.current = false;
     }
 
     updateStyles();
@@ -43,7 +39,7 @@ export const Header = (props: HeaderProps) => {
       window.removeEventListener('scroll', updateStyles);
       window.removeEventListener('resize', updateStyles);
     };
-  }, [isHomePage]);
+  }, [highlightAvatar]);
 
   return (
     <>
@@ -55,7 +51,7 @@ export const Header = (props: HeaderProps) => {
         }}
         {...props}
       >
-        {isHomePage && (
+        {highlightAvatar && (
           <>
             <div
               ref={avatarRef}
@@ -63,7 +59,7 @@ export const Header = (props: HeaderProps) => {
             />
             <Container
               className="top-0 order-last -mb-3 pt-3"
-              style={{ position: 'var(--header-position)' }}
+              style={{ position: 'sticky' }}
             >
               <div
                 className="top-[var(--avatar-top,theme(spacing.3))] w-full"
@@ -87,7 +83,7 @@ export const Header = (props: HeaderProps) => {
         <div
           ref={headerRef}
           className="top-0 z-10 h-16 pt-6"
-          style={{ position: 'var(--header-position)' }}
+          style={{ position: 'sticky' }}
         >
           <Container
             className="top-[var(--header-top,theme(spacing.6))] w-full"
@@ -95,12 +91,13 @@ export const Header = (props: HeaderProps) => {
           >
             <div className="relative flex gap-4">
               <div className="flex flex-1">
-                {!isHomePage && (
-                  <Avatar src={avatarImage} alt="Author Picture" />
+                {!highlightAvatar && (
+                  <Avatar bordered src={avatarImage} alt="Author Picture" />
                 )}
               </div>
               <div className="flex flex-1 justify-end md:justify-center">
                 <Navigation
+                  activePath={activePath}
                   items={[
                     { href: '/about', label: 'About' },
                     {
@@ -135,7 +132,7 @@ export const Header = (props: HeaderProps) => {
           </Container>
         </div>
       </header>
-      {isHomePage && <div style={{ height: 'var(--content-offset)' }} />}
+      {highlightAvatar && <div style={{ height: 'var(--content-offset)' }} />}
     </>
   );
 };

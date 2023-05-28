@@ -10,13 +10,11 @@ function removeProperty(property: string) {
 
 type UpdateHeaderStylesProps = {
   headerRect: DOMRect | undefined;
-  isInitial: boolean;
   downDelay: number;
   upDelay: number;
 };
 export function updateHeaderStyles({
   headerRect,
-  isInitial,
   downDelay,
   upDelay,
 }: UpdateHeaderStylesProps) {
@@ -27,13 +25,9 @@ export function updateHeaderStyles({
     document.body.scrollHeight - window.innerHeight
   );
 
-  if (isInitial) {
-    setProperty('--header-position', 'sticky');
-  }
-
   setProperty('--content-offset', `${downDelay}px`);
 
-  if (isInitial || scrollY < downDelay) {
+  if (scrollY < downDelay) {
     setProperty('--header-height', `${downDelay + height}px`);
     setProperty('--header-mb', `${-downDelay}px`);
   } else if (top + height < -upDelay) {
