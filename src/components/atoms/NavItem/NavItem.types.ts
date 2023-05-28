@@ -1,6 +1,5 @@
-import { ComponentPropsWithoutRef } from "react";
+import { ComponentPropsWithoutRef } from 'react';
 
 export interface NavItemProps extends ComponentPropsWithoutRef<'div'> {
-    active?: boolean;
+  active?: boolean;
 }
-

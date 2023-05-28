@@ -8,25 +8,24 @@ const meta: Meta<typeof NavItem> = {
   tags: ['autodocs'],
   args: {
     style: {
-        width: '100px',
+      width: '100px',
     },
     children: 'NavItem',
-  }
-}
+  },
+};
 
 export default meta;
 type Story = StoryObj<typeof NavItem>;
 
 export const Default: Story = {
-    args: {
-    }
-}
+  args: {},
+};
 
 export const Active: Story = {
-    args: {
-        active: true,
-        style: {
-            width: '100px',
-        }
-    }
-}
+  args: {
+    active: true,
+    style: {
+      width: '100px',
+    },
+  },
+};

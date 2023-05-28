@@ -29,14 +29,26 @@ const config: StorybookConfig = {
     if (!config.resolve) return config;
     if (!config.resolve.alias) config.resolve.alias = [];
 
-    config.resolve.alias['@/components/atoms'] = path.resolve(__dirname, '../src/components/atoms');
-    config.resolve.alias['@/components/molecules'] = path.resolve(__dirname, '../src/components/molecules');
-    config.resolve.alias['@/components/organisms'] = path.resolve(__dirname, '../src/components/organisms');
-    config.resolve.alias['@/components/templates'] = path.resolve(__dirname, '../src/components/templates');
+    config.resolve.alias['@/components/atoms'] = path.resolve(
+      __dirname,
+      '../src/components/atoms'
+    );
+    config.resolve.alias['@/components/molecules'] = path.resolve(
+      __dirname,
+      '../src/components/molecules'
+    );
+    config.resolve.alias['@/components/organisms'] = path.resolve(
+      __dirname,
+      '../src/components/organisms'
+    );
+    config.resolve.alias['@/components/templates'] = path.resolve(
+      __dirname,
+      '../src/components/templates'
+    );
     config.resolve.alias['@/images'] = path.resolve(__dirname, '../src/images');
     config.resolve.alias['@/utils'] = path.resolve(__dirname, '../src/utils');
 
     return config;
-  }
+  },
 };
 export default config;

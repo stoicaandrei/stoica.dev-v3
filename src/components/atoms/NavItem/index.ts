@@ -1,2 +1,2 @@
-export * from './NavItem.types'
-export * from './NavItem'
+export * from './NavItem.types';
+export * from './NavItem';

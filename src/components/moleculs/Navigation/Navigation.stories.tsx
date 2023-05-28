@@ -11,7 +11,7 @@ const meta: Meta<typeof Navigation> = {
       { href: '/contact', key: '/contact', children: 'Contact' },
     ],
   },
-  tags: ['autodocs']
+  tags: ['autodocs'],
 };
 
 export default meta;

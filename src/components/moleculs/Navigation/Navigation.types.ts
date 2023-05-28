@@ -1,11 +1,11 @@
-import { NavItemProps } from "@/components/atoms";
-import { ComponentPropsWithoutRef } from "react";
+import { NavItemProps } from '@/components/atoms';
+import { ComponentPropsWithoutRef } from 'react';
 
 interface ItemProps extends NavItemProps {
-    href?: string;
+  href?: string;
 }
 
 export interface NavigationProps extends ComponentPropsWithoutRef<'nav'> {
-    activeItem?: string;
-    items: ItemProps[];
+  activeItem?: string;
+  items: ItemProps[];
 }
