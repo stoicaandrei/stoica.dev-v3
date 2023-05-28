@@ -2,21 +2,13 @@
 
 // import { useRouter } from 'next/router';
 import { HeaderProps } from './Header.types';
-import {
-  Avatar,
-  ChevronDownIcon,
-  CloseIcon,
-  Container,
-  Icon,
-  MoonIcon,
-  SunIcon,
-} from '@/components/atoms';
-import { Fragment, useEffect, useRef, useState } from 'react';
+import { Avatar, Container, MoonIcon, SunIcon } from '@/components/atoms';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import avatarImage from '@/images/avatar.jpg';
-import { Popover, Transition } from '@headlessui/react';
-import { clamp } from '@/utils';
 import { Navigation } from '@/components/moleculs';
+import { toggleDarkMode } from './utils/toggleDarkmode';
+import { updateAvatarStyles, updateHeaderStyles } from './utils/scrollStyling';
 
 export const Header = (props: HeaderProps) => {
   //   const isHomePage = useRouter().pathname === '/';
@@ -30,87 +22,16 @@ export const Header = (props: HeaderProps) => {
     let downDelay = avatarRef.current?.offsetTop ?? 0;
     let upDelay = 64;
 
-    function setProperty(property, value) {
-      document.documentElement.style.setProperty(property, value);
-    }
-
-    function removeProperty(property) {
-      document.documentElement.style.removeProperty(property);
-    }
-
-    console.log('effect triggering');
-    function updateHeaderStyles() {
-      let { top, height } = headerRef.current.getBoundingClientRect();
-      let scrollY = clamp(
-        window.scrollY,
-        0,
-        document.body.scrollHeight - window.innerHeight
-      );
-
-      if (isInitial.current) {
-        setProperty('--header-position', 'sticky');
-      }
-
-      console.log('content offset');
-      setProperty('--content-offset', `${downDelay}px`);
-
-      if (isInitial.current || scrollY < downDelay) {
-        setProperty('--header-height', `${downDelay + height}px`);
-        setProperty('--header-mb', `${-downDelay}px`);
-      } else if (top + height < -upDelay) {
-        let offset = Math.max(height, scrollY - upDelay);
-        setProperty('--header-height', `${offset}px`);
-        setProperty('--header-mb', `${height - offset}px`);
-      } else if (top === 0) {
-        setProperty('--header-height', `${scrollY + height}px`);
-        setProperty('--header-mb', `${-scrollY}px`);
-      }
-
-      if (top === 0 && scrollY > 0 && scrollY >= downDelay) {
-        setProperty('--header-inner-position', 'fixed');
-        removeProperty('--header-top');
-        removeProperty('--avatar-top');
-      } else {
-        removeProperty('--header-inner-position');
-        setProperty('--header-top', '0px');
-        setProperty('--avatar-top', '0px');
-      }
-    }
-
-    function updateAvatarStyles() {
-      if (!isHomePage) {
-        return;
-      }
-
-      let fromScale = 1;
-      let toScale = 36 / 64;
-      let fromX = 0;
-      let toX = 2 / 16;
-
-      let scrollY = downDelay - window.scrollY;
-
-      let scale = (scrollY * (fromScale - toScale)) / downDelay + toScale;
-      scale = clamp(scale, fromScale, toScale);
-
-      let x = (scrollY * (fromX - toX)) / downDelay + toX;
-      x = clamp(x, fromX, toX);
-
-      setProperty(
-        '--avatar-image-transform',
-        `translate3d(${x}rem, 0, 0) scale(${scale})`
-      );
-
-      let borderScale = 1 / (toScale / scale);
-      let borderX = (-toX + x) * borderScale;
-      let borderTransform = `translate3d(${borderX}rem, 0, 0) scale(${borderScale})`;
-
-      setProperty('--avatar-border-transform', borderTransform);
-      setProperty('--avatar-border-opacity', scale === toScale ? 1 : 0);
-    }
-
     function updateStyles() {
-      updateHeaderStyles();
-      updateAvatarStyles();
+      updateHeaderStyles({
+        headerRect: headerRef.current?.getBoundingClientRect(),
+        isInitial: isInitial.current,
+        downDelay,
+        upDelay,
+      });
+      updateAvatarStyles({
+        downDelay,
+      });
       isInitial.current = false;
     }
 
@@ -122,7 +43,7 @@ export const Header = (props: HeaderProps) => {
       window.removeEventListener('scroll', updateStyles);
       window.removeEventListener('resize', updateStyles);
     };
-  }, []);
+  }, [isHomePage]);
 
   return (
     <>
@@ -155,7 +76,7 @@ export const Header = (props: HeaderProps) => {
                       className="block h-16 w-16 origin-left"
                       style={{ transform: 'var(--avatar-image-transform)' }}
                       src={avatarImage}
-                      alt="Avatar"
+                      alt="Author Picture"
                     />
                   </Link>
                 </div>
@@ -173,7 +94,11 @@ export const Header = (props: HeaderProps) => {
             style={{ position: 'var(--header-inner-position)' }}
           >
             <div className="relative flex gap-4">
-              <div className="flex flex-1">{!isHomePage && <Avatar />}</div>
+              <div className="flex flex-1">
+                {!isHomePage && (
+                  <Avatar src={avatarImage} alt="Author Picture" />
+                )}
+              </div>
               <div className="flex flex-1 justify-end md:justify-center">
                 <Navigation
                   items={[
@@ -195,10 +120,16 @@ export const Header = (props: HeaderProps) => {
                   className="pointer-events-auto hidden md:block"
                 />
               </div>
-              <div className="flex justify-end md:flex-1">
-                <div className="pointer-events-auto">
-                  <ModeToggle />
-                </div>
+              <div className="flex justify-end md:flex-1 pointer-events-auto">
+                <button
+                  type="button"
+                  aria-label="Toggle dark mode"
+                  className="group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
+                  onClick={toggleDarkMode}
+                >
+                  <SunIcon className="dark:hidden" groupHover />
+                  <MoonIcon className="hidden dark:block" groupHover />
+                </button>
               </div>
             </div>
           </Container>
@@ -208,38 +139,3 @@ export const Header = (props: HeaderProps) => {
     </>
   );
 };
-
-function ModeToggle() {
-  function disableTransitionsTemporarily() {
-    document.documentElement.classList.add('[&_*]:!transition-none');
-    window.setTimeout(() => {
-      document.documentElement.classList.remove('[&_*]:!transition-none');
-    }, 0);
-  }
-
-  function toggleMode() {
-    disableTransitionsTemporarily();
-
-    let darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    let isSystemDarkMode = darkModeMediaQuery.matches;
-    let isDarkMode = document.documentElement.classList.toggle('dark');
-
-    if (isDarkMode === isSystemDarkMode) {
-      delete window.localStorage.isDarkMode;
-    } else {
-      window.localStorage.isDarkMode = isDarkMode;
-    }
-  }
-
-  return (
-    <button
-      type="button"
-      aria-label="Toggle dark mode"
-      className="group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
-      onClick={toggleMode}
-    >
-      <SunIcon className="dark:hidden" groupHover />
-      <MoonIcon className="hidden dark:block" groupHover />
-    </button>
-  );
-}
