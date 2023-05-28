@@ -7,17 +7,25 @@ export const Avatar = ({
   alt,
   className,
   size = 'normal',
+  bordered = false,
   ...props
 }: AvatarProps): JSX.Element => {
+  const imageSizes = clsx({
+    'h-16 w-16': size === 'large',
+    'h-9 w-9': size === 'normal',
+  });
+
+  const borderSizes = clsx({
+    'h-20 w-20 p-2': size === 'large',
+    'h-10 w-10 p-0.5': size === 'normal',
+  });
+
   return (
     <div
       className={clsx(
         className,
         'rounded-full bg-white/90 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:ring-white/10',
-        {
-          'h-20 w-20 p-2': size === 'large',
-          'h-10 w-10 p-0.5': size === 'normal',
-        }
+        bordered ? borderSizes : imageSizes
       )}
       {...props}
     >
@@ -27,10 +35,7 @@ export const Avatar = ({
         sizes={size === 'large' ? '4rem' : '2.25rem'}
         className={clsx(
           'rounded-full bg-zinc-100 object-cover dark:bg-zinc-800',
-          {
-            'h-16 w-16': size === 'large',
-            'h-9 w-9': size === 'normal',
-          }
+          imageSizes
         )}
         priority
       />
