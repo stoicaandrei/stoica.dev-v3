@@ -19,6 +19,7 @@ export default function RootLayout({
   return (
     <html className="h-full antialiased" lang="en">
       <head>
+        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
         <script src="./darkthemeHandler.js" />
         <link
           rel="alternate"
