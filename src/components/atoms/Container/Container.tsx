@@ -20,10 +20,14 @@ const InnerContainer = ({ className, children, ...props }: ContainerProps) => {
   );
 };
 
-export const Container = ({ children, ...props }: ContainerProps) => {
+export const Container = ({
+  children,
+  innerClassName,
+  ...props
+}: ContainerProps) => {
   return (
     <OuterContainer {...props}>
-      <InnerContainer>{children}</InnerContainer>
+      <InnerContainer className={innerClassName}>{children}</InnerContainer>
     </OuterContainer>
   );
 };

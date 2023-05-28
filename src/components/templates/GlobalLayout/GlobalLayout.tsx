@@ -1,5 +1,5 @@
 'use client';
-import { Header } from '@/components/organisms';
+import { Footer, Header } from '@/components/organisms';
 import { GlobalLayoutProps } from './GlobalLayout.types';
 import { usePathname } from 'next/navigation';
 
@@ -16,7 +16,7 @@ export const GlobalLayout = ({ children }: GlobalLayoutProps) => {
       <div className="relative">
         <Header highlightAvatar={pathname === '/'} activePath={pathname} />
         <main>{children}</main>
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </>
   );
