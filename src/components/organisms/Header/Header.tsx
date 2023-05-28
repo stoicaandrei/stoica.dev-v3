@@ -90,12 +90,14 @@ export const Header = ({
             style={{ position: 'var(--header-inner-position)' }}
           >
             <div className="relative flex gap-4">
-              <div className="flex flex-1">
+              <div className="flex flex-1 pointer-events-auto">
                 {!highlightAvatar && (
-                  <Avatar bordered src={avatarImage} alt="Author Picture" />
+                  <Link href="/">
+                    <Avatar bordered src={avatarImage} alt="Author Picture" />
+                  </Link>
                 )}
               </div>
-              <div className="flex flex-1 justify-end md:justify-center">
+              <div className="flex flex-1 justify-end md:justify-center pointer-events-auto">
                 <Navigation
                   activePath={activePath}
                   items={[
@@ -114,7 +116,6 @@ export const Header = ({
                     },
                     { href: '/uses', label: 'Uses' },
                   ]}
-                  className="pointer-events-auto hidden md:block"
                 />
               </div>
               <div className="flex justify-end md:flex-1 pointer-events-auto">
