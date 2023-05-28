@@ -1,4 +1,4 @@
-import { NavItemProps } from "@/atoms";
+import { NavItemProps } from "@/components/atoms";
 import { ComponentPropsWithoutRef } from "react";
 
 interface ItemProps extends NavItemProps {

@@ -1,4 +1,4 @@
-import avatarImage from '../../images/avatar.jpg';
+import avatarImage from '@/images/avatar.jpg';
 import { Avatar } from './Avatar';
 import { Meta, StoryObj } from '@storybook/react';
 

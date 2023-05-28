@@ -10,7 +10,7 @@ import {
   CloseIcon,
   BriefcaseIcon,
   ArrowDownIcon,
-} from '@/atoms';
+} from '@/components/atoms';
 import Head from 'next/head';
 import Link from 'next/link';
 

@@ -10,13 +10,13 @@ import {
   Icon,
   MoonIcon,
   SunIcon,
-} from '@/atoms';
+} from '@/components/atoms';
 import { Fragment, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import avatarImage from '@/images/avatar.jpg';
 import { Popover, Transition } from '@headlessui/react';
 import { clamp } from '@/utils';
-import { Navigation } from '@/moleculs';
+import { Navigation } from '@/components/moleculs';
 
 export const Header = (props: HeaderProps) => {
   //   const isHomePage = useRouter().pathname === '/';
